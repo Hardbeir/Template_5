@@ -1,0 +1,70 @@
+@import "sections/header/_header.sass";
+@import "sections/footer/_footer.sass";
+@import "styles/_fonts.sass";
+
+
+
+$blue: #597f45
+$white: #fff
+$black: #334
+$light-color: #777
+$light-bg: #f5f5f5
+$border: .2rem solid $black
+$box-shadow: 0 .5rem 1rem rgba(0,0,0,.1)
+
+@mixin grid($val)
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr))
+    gap: 2rem
+
+@mixin titleText($titleSize)
+    font-size: $titleSize
+    text-transform: capitalize
+    color: $black
+
+@mixin graphText($graphSize)
+    font-size: $graphSize
+    line-height: 2
+    color: $black
+
+
+
+
+*
+    font-family: 'Montserrat', sans-serif
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    outline: none
+    border: none
+    text-decoration: none
+    transition: all .2s linear
+
+
+
+html
+    font-size: hidden
+    scroll-behavior: smooth
+    scroll-padding-top: 6rem
+    &::-webkit-scrollbar
+        width: 1rem
+    &::-webkit-scrollbar-track
+        background: $white
+    &::-webkit-scrollbar-thumb
+        background: $blue
+        border-radius: 5rem
+
+.header
+    .navbar
+        padding: 2rem 10%
+        display: flex
+        align-items: center
+        justify-content: space-between
+        background: $white
+        border-bottom: $border
+        .logo
+            @include titleText(2.5rem)
+            font-weight: bolder
+            i
+                color: $blue
+            
