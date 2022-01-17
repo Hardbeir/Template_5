@@ -1,0 +1,176 @@
+@import "styles/_fonts.sass";
+    
+$blue: #2d75b1
+$light-color: #5e90b9
+$black: #000
+$white: #fff
+$border: .2rem solid $black
+$box-shadow: 0 1rem 1.5rem rgba(0,0,0,.3)
+
+
+@mixin grid($val)
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr))
+    gap: 2rem
+    
+@mixin titleText($titleSize)
+    font-size: $titleSize
+    text-transform: capitalize
+    color: $black
+
+@mixin graphText($graphSize)
+    font-size: $graphSize
+    line-height: 2
+    color: $light-color
+    
+*
+    font-family: 'Inter', sans-serif
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    outline: none
+    border: none
+    text-decoration: none
+    text-transform: capitalize
+     
+
+html
+    font-size: 62.5%
+    overflow-x: hidden
+    scroll-behavior: smooth
+    scroll-padding-top: 7rem
+    &::-webkit-scrollbar
+        width: 1rem
+    &::-webkit-scrollbar-track
+        background: $white
+    &::webkit-scroll-thumb
+        background: $blue
+        border-radius: 5rem
+
+section
+    padding: 5rem 10%
+
+.btn
+    display: inline-block
+    margin-top: 1rem
+    padding: 1rem 3rem
+    cursor: pointer
+    background: $white
+    @include titleText(1.7rem)    
+    border: $border
+    &:hover
+        background: $blue
+        border-color: $blue
+        color: $white
+
+.header
+    .navbar
+        padding: 2rem 10%
+        display: flex
+        align-items: center
+        justify-content: space-between
+        background: $white
+        border-bottom: $border
+        position: relative
+        z-index: 1000
+        &.active
+            position: fixed
+            top: 0
+            left: 0
+            right: 0
+            border-bottom: none
+            box-shadow: $box-shadow
+        .logo
+            @include titleText(2.5rem)
+            font-weight: bolder
+            i
+                color: $blue
+        .links
+            a
+                margin-right: 2rem
+                @include titleText(2rem)
+                &:hover
+                    text-decoration: underline
+                    color: $blue
+    #menu-btn
+        font-size: 3rem
+        cursor: pointer
+        color: $black
+        display: none
+
+
+.home
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    gap: 3rem
+    .image
+        flex: 1 1 40rem
+        img
+            width: 100%
+    .content
+        flex: 1 1 40rem
+        h3
+            @include titleText(4.5rem)
+        p
+            @include graphText(1.5rem)
+            padding: 1rem 0
+            
+            
+
+
+
+
+
+@media (max-width: 1200px)
+    .header 
+        .contact-info
+            padding: 2rem 5%
+        .navbar
+            padding: 2rem 5%
+    section
+        padding: 3rem 5%
+
+@media (max-width: 991px)
+    html
+        font-size: 55%
+    section
+        padding: 3rem 2rem
+    .header 
+        .contact-info
+            padding: 2rem
+        .navbar
+            padding: 2rem
+
+
+@media ( max-width: 768px )
+    .header
+        #menu-btn
+            display: inline-block
+            &.fa-times
+                transform: rotate(180deg)
+        .navbar
+            .links
+                position: absolute
+                top: 99%
+                left: 0
+                right: 0
+                background: $white
+                border-top: $border
+                border-bottom: $border
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0)
+                &.active
+                    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%)
+                a
+                    display: block
+                    margin: 2.5rem 2rem
+                    font-size: 2.5rem
+    
+    
+@media (max-width: 450px)
+    html
+        font-size: 50%
+    .home 
+        .content
+            h3
+                font-size: 3rem
